@@ -7,23 +7,23 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Potrošnja</title>
     <style>
-        /* Custom styles to increase card size on larger screens and center them */
+      
         .card {
-            transition: transform 0.2s; /* Smooth scaling on hover */
-            width: 100%; /* Full width for the card */
-            max-width: 400px; /* Increased maximum width for the card */
-            margin: auto; /* Centering the card */
+            transition: transform 0.2s; 
+            width: 100%; 
+            max-width: 400px; 
+            margin: auto; 
           
         }
 
         .card:hover {
-            transform: scale(1.05); /* Slightly enlarge the card on hover */
+            transform: scale(1.05); 
         }
 
         @media (min-width: 768px) {
             .card {
-                width: 100%; /* Full width for the card */
-                max-width: 450px; /* Maximum width for larger screens */
+                width: 100%; 
+                max-width: 450px;
             }
 
             .chart-container {
@@ -93,7 +93,7 @@
 
      // Create chart
      const config = {
-         type: 'bar', // or 'line', 'pie', bar.
+         type: 'bar',
          data: data,
          options: {
              responsive: true,
