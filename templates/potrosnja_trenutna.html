@@ -7,23 +7,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Potrošnja</title>
     <style>
-        /* Custom styles to increase card size on larger screens and center them */
         .card {
-            transition: transform 0.2s; /* Smooth scaling on hover */
-            width: 100%; /* Full width for the card */
-            max-width: 400px; /* Increased maximum width for the card */
-            margin: auto; /* Centering the card */
+            transition: transform 0.2s;
+            width: 100%; 
+            max-width: 400px; 
+            margin: auto;
           
         }
 
         .card:hover {
-            transform: scale(1.05); /* Slightly enlarge the card on hover */
+            transform: scale(1.05); 
         }
 
         @media (min-width: 768px) {
             .card {
-                width: 100%; /* Full width for the card */
-                max-width: 450px; /* Maximum width for larger screens */
+                width: 100%; 
+                max-width: 450px; 
             }
 
             .chart-container {
@@ -80,9 +79,8 @@
 
 
 <script>
-  // Get the data passed from Flask (store names and spending data)
-  const labels = {{ kategorije | tojson }}; // Store names (Konzum, Lidl, etc.)
-  const dataset1 = {{ trosak  | tojson }};  // Total spending for each store
+  const labels = {{ kategorije | tojson }}; 
+  const dataset1 = {{ trosak  | tojson }};  
 
   // Define the chart data
   const data = {
@@ -91,8 +89,8 @@
           {
               label: 'Ukupna potrošnja}',
               data: dataset1,
-              backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'], // Light purple bars
-              borderColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'],     // Purple border for bars
+              backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'], 
+              borderColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'],     
               borderWidth: 1
           }
       ]
@@ -100,8 +98,7 @@
 
   // Chart configuration
   const config = {
-      type: 'pie', // Using bar chart for better visibility of store comparisons
-      data: data,
+      type: 'pie', 
       options: {
           responsive: true,
           maintainAspectRatio: false,
