@@ -21,8 +21,6 @@
                     {% endif %}
                     {% endwith %}
                     
-                    
-       
                           {% for podatak in potrosnja %}
                                   <div class="list-group {{loop.index}}" >
                                     <a href="{{ url_for('odabir_racuna', upload_id=podatak.id) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
