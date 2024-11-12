@@ -1,0 +1,53 @@
+{%extends "base.html" %} 
+{%block content%} 
+
+<div class="container mt-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">POTROŠNJA PO MJESECIMA</h4 >
+                        <div class="card-body">
+
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                              <div class="flashes">
+                                  {% for category, message in messages %}
+                                  <div class="alert alert-light" role="alert">
+                                   {{ message }}
+                                  </div>
+                                  {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+    
+                          
+             
+                                {% for record in monthly_spending %}
+                                    <div class="list-group {{ loop.index }}">
+    
+                                        <a href="{{ url_for('prikaz_troskova', month=record.month) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                                                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                              </svg>
+                                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                                <div>
+                                                    <h6 class="mb-0">{{ record.month }}</h6>
+                                                    <p class="mb-0 opacity-75">{{ record.total_spent }} €</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+

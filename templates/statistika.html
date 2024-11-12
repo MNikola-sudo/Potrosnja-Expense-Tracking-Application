@@ -1,0 +1,96 @@
+{%extends "base.html" %} 
+{%block content%} 
+
+<div class="container mt-5 py-5">  
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card">  
+                <div class="card-body">
+                        <div class="chart-container">
+                          <canvas id="myChart"></canvas>
+                        </div>
+                        <div class="list-group" >                        
+                            <a href="{{url_for('ukupna_potrosnja_po_kategorijama')}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z"/>
+                                </svg>                  
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                <h6 class="mb-0">POTROŠNJA PO KATEGORIJAMA</h6>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="{{url_for('statistika')}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" fill="currentColor" class="bi bi-pie-chart-fill" viewBox="0 0 16 16">
+                                <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778zM8.5.015V7.5h7.485A8 8 0 0 0 8.5.015"/>
+                                </svg>
+                                <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">TRENUTNA POTROŠNJA</h6>
+                                </div>
+                                </div>
+                            </a>
+                            <a href="{{url_for('potrosnja_zadnjih_pet')}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+                                    </svg>                      
+                                <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">NAJVEĆI TROŠKOVI</h6>
+                                </div>
+                                </div>
+                            </a>
+                            {% for message in get_flashed_messages() %}
+
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                {{ message }}
+                            {% endfor %}                                  
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+  // Get data passed from Flask
+  const labels = {{ labels | tojson }};
+  const dataset1 = {{ values | tojson }};
+
+  // Define chart configuration
+  const data = {
+      labels: labels,
+      datasets: [
+          {
+              label: 'Zadnjih 5 potrošnje',
+              data: dataset1,
+             backgroundColor: 'rgb(0, 0, 255)',
+             borderColor: 'rgb(0, 0, 255)',
+
+             borderWidth: 2
+          },
+         
+      ]
+  };
+
+  // Create chart
+  const config = {
+      type: 'line', // or 'line', 'pie', bar.
+      data: data,
+      options: {
+          responsive: true,
+          maintainAspectRatio: false
+      }
+  };
+
+  new Chart(document.getElementById('myChart'), config);
+</script>
+
+
+
+
+{% endblock %}

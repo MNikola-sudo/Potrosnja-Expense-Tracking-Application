@@ -1,0 +1,34 @@
+{%extends "base.html" %} 
+{%block content%} 
+
+<div class="container mt-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 mb-4 d-flex justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Troškovi za {{ selected_month }}</h5>
+
+                    {% for item in potrosnja %}
+                        <div class="list-group {{loop.index}}" >
+                            <a href="{{ url_for('odabir_racuna', upload_id=item.id) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16">
+                                    <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a2 2 0 0 1-1-.268M1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1"/>
+                                </svg>
+                                <div class="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">{{ item.kategorija }}</h6>
+                                        <p class="mb-0 opacity-75">{{ item.trosak }} €</p>
+                                    </div>
+                                </div>                                  
+                            </a>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

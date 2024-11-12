@@ -1,0 +1,29 @@
+   .card {
+    transition: transform 0.2s; 
+    width: 100%;
+    max-width: 400px;
+    margin: auto; 
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 100%; 
+        max-width: 450px; 
+    }
+
+    .chart-container {
+        width: 100%;
+        max-width: 450px;
+}}
+
+.chart-container {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: auto;
+    padding: 10px;
+}
