@@ -29,5 +29,16 @@ This expense tracking application, built using Flask and SQLAlchemy, provides us
   User Authentication: Flask-Login manages sessions to ensure that only logged-in users can access their data.
   Password Security: Bcrypt is used for secure password hashing to protect user information.
   Web Forms: User forms created with WTForms include input validation, making registration and login user-friendly.
+
+## Database Creation:
+  When the app is first launched, the database is automatically created if it doesn't already exist. This is done by calling the db.create_all() function within the Python script. After installing the necessary packages and activating the virtual environment, the   database will be ready to use.
   
 This application is ideal for users looking to gain insight into their monthly spending, analyze their financial habits, and track personal financial goals.
+
+## INSTALLATION:
+    Clone the repository
+    Create a virtual environment: python3 -m venv venv
+    Activate the virtual environment: venv\Scripts\activate
+    Install dependencies: pip install -r requirements.txt
+    Run the application - (database will be created automatically on first run)
+    Deactivate the virtual environment when done
