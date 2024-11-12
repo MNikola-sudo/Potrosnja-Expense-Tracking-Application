@@ -21,7 +21,7 @@
               {% endwith %}
               <form   action="{{url_for('dodaj_trosak')}}" method="POST" enctype="multipart/form-data">
                   <div class="input-group mb-3">
-                      <label class="input-group-text text-white bg-bd-primary" for="inputGroupSelect01">Naziv trgovine  </label>
+                      <label class="input-group-text text-white bg-bd-primary" for="inputGroupSelect01">Naziv kategorije</label>
                       <select class="form-select" name="kategorija" id="inputGroupSelect01">
                       <option selected>odaberi...</option>
                       {% for kategorija in kategorije %}
